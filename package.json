@@ -12,9 +12,15 @@
     "vue": "^3.5.32"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.6",
-    "vite": "^8.0.8",
-    "vite-plugin-vue-devtools": "^8.1.1"
+    "@types/node": "^25.8.0",
+    "@vitejs/plugin-vue": "5",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "3",
+    "typescript": "^6.0.3",
+    "vite": "7",
+    "vite-plugin-vue-devtools": "^8.1.1",
+    "vue-tsc": "^3.2.9"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"

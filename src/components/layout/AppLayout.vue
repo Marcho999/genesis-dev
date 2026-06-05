@@ -1,20 +1,27 @@
+<script setup>
+import AppNavbar from './AppNavbar.vue'
+</script>
+
 <template>
   <div class="app-shell">
-    <header class="app-header">
-      <a class="brand" href="/" aria-label="Genesis Dev">
-        <span class="brand-mark">G</span>
-        <span>Genesis Dev</span>
-      </a>
-
-      <nav class="main-nav" aria-label="Principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#proyecto">Proyecto</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </header>
-
+    <AppNavbar />
     <main class="app-main">
       <slot />
     </main>
   </div>
 </template>
+
+<style scoped>
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: min(100% - 48px, var(--container-width));
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+</style>

@@ -1,10 +1,11 @@
 <script setup>
 import AppLayout from './components/layout/AppLayout.vue'
-import HomeView from './views/HomeView.vue'
+import AppNotifications from './components/base/AppNotifications.vue'
 </script>
 
 <template>
   <AppLayout>
-    <HomeView />
+    <RouterView />
   </AppLayout>
+  <AppNotifications />
 </template>

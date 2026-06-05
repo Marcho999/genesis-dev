@@ -1,15 +1,40 @@
 :root {
-  --color-background: #f7f8fb;
-  --color-surface: #ffffff;
-  --color-surface-muted: #eef2f6;
-  --color-text: #17202a;
-  --color-text-muted: #5e6b7a;
-  --color-primary: #0f766e;
-  --color-primary-strong: #134e4a;
-  --color-border: #d9e0e8;
+  /* ─── Colores principales ─── */
+  --color-bg:            #0f1117;
+  --color-surface:       #1a1d27;
+  --color-surface-hover: #21253a;
+  --color-border:        #2a2d3e;
 
-  --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.09);
-  --radius-sm: 6px;
+  /* Texto */
+  --color-text:       #e8eaf0;
+  --color-text-muted: #8b90a7;
+
+  /* Acento naranja Zapadictos */
+  --color-primary:       #f97316;
+  --color-primary-hover: #ea6c0a;
+
+  /* Semánticos */
+  --color-success: #22c55e;
+  --color-danger:  #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-warning: #f59e0b;
+  --color-info:    #63b3ed;
+
+  /* ─── Tipografía ─── */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  /* ─── Espaciado / Forma ─── */
+  --radius-sm: 4px;
   --radius-md: 8px;
-  --container-width: 1120px;
+  --radius-lg: 12px;
+
+  /* ─── Sombras ─── */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
+
+  /* ─── Layout ─── */
+  --container-width: 1200px;
+  --navbar-height:   60px;
+
+  /* ─── Transiciones ─── */
+  --transition-fast: 150ms ease;
 }

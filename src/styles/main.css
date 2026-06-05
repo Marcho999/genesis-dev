@@ -1,4 +1,20 @@
 @import './reset.css';
 @import './variables.css';
 @import './layout.css';
-@import './pages.css';
+
+body {
+  background-color: var(--color-bg);
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+#app {
+  min-height: 100vh;
+}

@@ -1,50 +1,30 @@
 <script setup>
-import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../../../stores/auth.js'
 import { useNotificationsStore } from '../../../stores/notifications.js'
-import AppInput from '../../../components/base/AppInput.vue'
-import AppButton from '../../../components/base/AppButton.vue'
-import { validate, required, isEmail, minLength } from '../../../utils/validators.js'
 
-const router  = useRouter()
-const auth    = useAuthStore()
-const notif   = useNotificationsStore()
+const router = useRouter()
+const auth   = useAuthStore()
+const notif  = useNotificationsStore()
 
-// 'choose' | 'admin' | 'normal'
-const step = ref('choose')
-
-const form = reactive({ email: '', password: '' })
-const errors = reactive({ email: null, password: null })
-
-function selectRole(role) { step.value = role }
-
-function validateForm() {
-  errors.email    = validate(form.email,    [required, isEmail])
-  errors.password = validate(form.password, [required, minLength(8)])
-  return !errors.email && !errors.password
-}
-
-async function submit() {
-  if (!validateForm()) return
+async function entrar(role) {
   try {
-    await auth.login({ ...form, role: step.value })
-    notif.success('Bienvenido a Zapadictos')
+    await auth.login({ role })
+    notif.success('Bienvenido a GENESIS')
     router.push(auth.isAdmin ? '/productos' : '/catalogo')
   } catch {
-    notif.error(auth.error ?? 'Credenciales incorrectas')
+    notif.error('Error al iniciar sesión')
   }
 }
 </script>
 
 <template>
   <div class="login-wrap">
-    <!-- Step 1: elegir tipo de acceso -->
-    <div v-if="step === 'choose'" class="login-card">
+    <div class="login-card">
       <div class="login-brand">
-        <span class="brand-icon">Z</span>
+        <span class="brand-icon">G</span>
         <div>
-          <p class="brand-name">Zapadictos</p>
+          <p class="brand-name">GENESIS</p>
           <p class="brand-tag">Calzado urbano</p>
         </div>
       </div>
@@ -53,12 +33,12 @@ async function submit() {
       <p class="login-sub">Selecciona el tipo de acceso según tu rol</p>
 
       <div class="role-grid">
-        <button class="role-card" @click="selectRole('admin')">
+        <button class="role-card" :disabled="auth.loading" @click="entrar('admin')">
           <span class="role-icon">⚙</span>
           <strong>Administrador</strong>
           <p>Gestiona productos, promociones y pedidos</p>
         </button>
-        <button class="role-card" @click="selectRole('normal')">
+        <button class="role-card" :disabled="auth.loading" @click="entrar('normal')">
           <span class="role-icon">👟</span>
           <strong>Cliente</strong>
           <p>Explora el catálogo y realiza compras</p>
@@ -69,44 +49,6 @@ async function submit() {
         ¿Solo quieres ver el catálogo?
         <RouterLink to="/catalogo" class="link">Entrar sin cuenta</RouterLink>
       </p>
-    </div>
-
-    <!-- Step 2: formulario de login -->
-    <div v-else class="login-card">
-      <button class="back-btn" @click="step = 'choose'">← Volver</button>
-
-      <div class="login-brand">
-        <span class="brand-icon">Z</span>
-        <div>
-          <p class="brand-name">Zapadictos</p>
-          <p class="brand-tag">{{ step === 'admin' ? 'Panel Admin' : 'Acceso Cliente' }}</p>
-        </div>
-      </div>
-
-      <h1 class="login-title">Iniciar sesión</h1>
-
-      <form class="login-form" @submit.prevent="submit">
-        <AppInput
-          v-model="form.email"
-          label="Correo electrónico"
-          type="email"
-          placeholder="tu@email.com"
-          :error="errors.email"
-          required
-        />
-        <AppInput
-          v-model="form.password"
-          label="Contraseña"
-          type="password"
-          placeholder="Mínimo 8 caracteres"
-          :error="errors.password"
-          required
-        />
-
-        <AppButton type="submit" :loading="auth.loading" full>
-          Ingresar
-        </AppButton>
-      </form>
     </div>
   </div>
 </template>

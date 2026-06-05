@@ -29,9 +29,9 @@ onMounted(() => store.fetchOne(route.params.id))
       <!-- Encabezado -->
       <div class="comp-header">
         <div class="comp-brand">
-          <span class="brand-icon">Z</span>
+          <span class="brand-icon">G</span>
           <div>
-            <p class="brand-name">Zapadictos</p>
+            <p class="brand-name">GENESIS</p>
             <p class="brand-tag">Calzado urbano</p>
           </div>
         </div>

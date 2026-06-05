@@ -29,7 +29,7 @@ function isActive(to) {
     <div class="navbar-inner">
       <!-- Brand -->
       <RouterLink to="/" class="brand">
-        <span class="brand-icon">Z</span>
+        <span class="brand-icon">G</span>
         <div class="brand-text">
           <span class="brand-name">{{ APP_NAME }}</span>
           <span class="brand-tag">{{ APP_TAGLINE }}</span>

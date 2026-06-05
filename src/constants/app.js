@@ -1,4 +1,4 @@
-export const APP_NAME    = 'Zapadictos'
+export const APP_NAME    = 'GENESIS'
 export const APP_TAGLINE = 'Calzado urbano'
 
 // Navegación por rol
